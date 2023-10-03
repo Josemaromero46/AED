@@ -1,0 +1,63 @@
+2.1 En la clase Array del programa Array.py (Listado 2-3), añade un método
+método llamado getMaxNum() que devuelva el valor del mayor
+del array, o None si el array no tiene números. Puede utilizar
+la expresión isinstance(x, (int, float)) para comprobar si hay números.
+Añade algo de código a ArrayClient.py (Listado 2-4) para ejercitar este método.
+método. Deberías probarlo en matrices que contengan una variedad de tipos de datos
+y algunas que contengan ceros y otras que no contengan números.
+
+2.2 Modifica el método del Proyecto de Programación 2.1 para que el elemento
+con el valor numérico más alto no sólo sea devuelto por el método sino que
+también se elimine de la matriz. Llame al método deleteMaxNum().
+
+2.3 El método deleteMaxNum() del Proyecto de Programación 2.2 sugiere
+una forma de crear un array de números ordenados por valor numérico.
+Implementa un esquema de ordenación que no requiera modificar la clase
+Array del Proyecto 2.2, sino sólo el código de ArrayClient.py
+(Listado 2-4).
+
+2.4 Escribe un método removeDupes() para el programa Array.py (Listado
+2-3) que elimine cualquier entrada duplicada en el array. Es decir, si aparecen tres
+elementos con el valor 'bar' aparecen en el array, removeDupes() debería
+debería eliminar dos de ellos. No te preocupes por mantener el orden de los
+elementos. Una forma de hacerlo es crear una nueva lista vacía, mover los elementos de uno en uno dentro de ella después de comprobar primero que están en orden.
+a la vez después de comprobar que no están ya en la nueva lista, y luego
+lista, y luego establecer la matriz para que sea la nueva lista. Por supuesto, el tamaño del array
+se reducirá si existen entradas duplicadas. Escribe algunas pruebas para
+mostrar que funciona en arrays con y sin valores duplicados.
+
+2.5 Añade un método merge() a la clase OrderedRecordArray (Listado 2-8 y Listado 2-9).
+2-8 y Listado 2-9) para que puedas fusionar un array fuente ordenado
+en el objeto OrderedArray existente. La fusión debe producirse
+sólo si las funciones clave de ambos objetos son idénticas. Su solución debería
+crear una nueva lista lo suficientemente grande como para contener el contenido de la lista actual (self)
+actual y la lista del array que se fusiona. Escribe pruebas para la implementación de tu clase
+que cree dos matrices, inserte en ellas números aleatorios
+en ellas, invoque a merge() para añadir el contenido de una a la otra,
+y muestre el contenido de la matriz resultante. Las matrices de origen
+pueden contener diferentes números de datos. El algoritmo debe
+comparar las claves de las matrices de origen y elegir la más pequeña para copiarla en la matriz de destino.
+copiar en el destino. También debe manejar la situación en la que
+una matriz de origen agota su contenido antes que la otra. Tenga en cuenta que, en
+Python, puedes acceder a los atributos privados de un parámetro de forma
+similar al uso de self. Si el parámetro arr es un objeto OrderedRecordArray
+puedes acceder a su número de elementos como arr.__nItems.
+
+2.6 Modifica la clase OrderedRecordArray (Listado 2-8 y Listado 2-
+9) para que las peticiones de borrado de registros con claves duplicadas
+encuentren los registros objetivo y los eliminen si están presentes. Asegúrese de probar
+el programa a fondo para que, independientemente del número de registros
+con claves duplicadas o su orden dentro de la lista interna, su versión
+versión modificada encuentre el registro coincidente si existe y deje la lista
+la lista si no existe.
+
+2.7 Modifica la clase OrderedRecordArray (Listado 2-8 y Listado 2-
+9) para que almacene el tamaño máximo del array. Cuando una inserción
+sobrepase el tamaño máximo actual, crea una nueva lista capaz de
+capaz de contener más datos y copiar en ella el contenido de la lista existente. El
+nuevo tamaño puede ser un incremento fijo o un múltiplo del tamaño actual.
+Pruebe su nueva clase insertando datos de forma que obligue al objeto a
+ampliar la lista varias veces y determine cuál es la mejor estrategia
+-hacer crecer la lista añadiendo una cantidad fija de almacenamiento cada vez que se
+cada vez que se llena, o multiplicar el almacenamiento de la lista por un múltiplo fijo cada vez que se llena.
+cada vez que se llena.

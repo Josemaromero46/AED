@@ -3,5 +3,3 @@
 #Puedes usar la expresión es instancia (x, (int, float)) para probar números. Agregue algo de código 
 #a ArrayClient.py (Listado 2-4) para ejercitar esto método.  Deberías probarlo en matrices que 
 #contengan una variedad de tipos de datos. y algunos que contienen ceros y otros que no contienen números.
-
-print("h")

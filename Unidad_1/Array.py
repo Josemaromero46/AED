@@ -45,4 +45,16 @@ class Array(object):
           function(self.__a[j])
 
     def getMaxNum(self):
-       pass
+        max_num = None  # Inicializamos la variable para almacenar el número máximo
+        for item in self.__a[:self.__nItems]:  # Iteramos solo sobre los elementos válidos en la matriz
+            if isinstance(item, (int, float)):  # Verificamos si el elemento es un número
+                if max_num is None or item > max_num:
+                    max_num = item  # Actualizamos el número máximo si encontramos uno más grande
+        return max_num
+    
+    def deleteMaxNum(self):
+        maxnum = self.getMaxNum()
+        if maxnum is not None:
+            self.delete(maxnum)
+
+
