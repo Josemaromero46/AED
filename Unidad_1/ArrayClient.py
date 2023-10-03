@@ -28,8 +28,8 @@ print("-----EJERCICIO 2.1-----")
 my_array = Array.Array(10)
 my_array.insert(5)
 my_array.insert(10)
-my_array.insert(2.5)
-my_array.insert("No soy un número")
+my_array.insert(2)
+my_array.insert(10)
 
 max_number = my_array.getMaxNum()
 if max_number is not None:
@@ -42,4 +42,28 @@ print("-----EJERCICIO 2.2-----")
 my_array.traverse()
 my_array.deleteMaxNum()
 print("La matriz después borrar el valor maximo tiene", len(my_array), "elementos")
+my_array.traverse()
+
+# EJERCICIO 2.3
+print("-----EJERCICIO 2.3-----")
+# ordenar la matriz
+for i in range(len(my_array) - 1):
+    min_index = i
+    for j in range(i + 1, len(my_array)):
+        # Convertir elementos a números antes de comparar
+        if float(my_array.get(j)) < float(my_array.get(min_index)):
+            min_index = j
+    if min_index != i:
+        # Intercambiar los elementos en min_index y i
+        my_array.set(i, my_array.get(min_index))
+        my_array.set(min_index, my_array.get(i))
+
+print("Matriz ordenada:")
+my_array.traverse()
+
+# EJERCICIO 2.4
+print("-----EJERCICIO 2.4-----")
+my_array.removeDupes()  # Llamar al método para eliminar duplicados
+
+print("Matriz después de eliminar duplicados:")
 my_array.traverse()

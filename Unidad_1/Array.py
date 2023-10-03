@@ -57,4 +57,17 @@ class Array(object):
         if maxnum is not None:
             self.delete(maxnum)
 
+    def removeDupes(self):
+            unique_elements = []
+            i=-1
+            for i in range(self.__nItems):
+                item = self.__a[i]
+                if item not in unique_elements:
+                    unique_elements.append(item)
+                    
+            self._a = unique_elements
+            
+            self._nItems = len(unique_elements) 
+                        
+
 
