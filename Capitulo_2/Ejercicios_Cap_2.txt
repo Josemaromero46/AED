@@ -10,8 +10,7 @@ y algunas que contengan ceros y otras que no contengan números.
 con el valor numérico más alto no sólo sea devuelto por el método sino que
 también se elimine de la matriz. Llame al método deleteMaxNum().
 
-2.3 El método deleteMaxNum() del Proyecto de Programación 2.2 sugiere
-una forma de crear un array de números ordenados por valor numérico.
+2.3 El método deleteMaxNum() del Proyecto a de crear un array de números ordenados por valor numérico.
 Implementa un esquema de ordenación que no requiera modificar la clase
 Array del Proyecto 2.2, sino sólo el código de ArrayClient.py
 (Listado 2-4).

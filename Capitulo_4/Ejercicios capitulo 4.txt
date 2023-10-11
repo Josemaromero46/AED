@@ -1,0 +1,92 @@
+4.1 Revisa la clase Stack en SimpleStack.py mostrada en el Listado 4-1 para que
+lanzar excepciones si algo es empujado a una pila llena, o sacado
+de una pila vacía. Escribe un programa de prueba que demuestre que la clase
+clase revisada acepta correctamente elementos hasta el tamaño original de la pila y
+luego lanza una excepción cuando se empuja otro elemento.
+
+4.2 Cree un programa que determine si una cadena de entrada es un
+palíndromo o no, ignorando los espacios en blanco, los dígitos, la puntuación y las mayúsculas y minúsculas.
+mayúsculas y minúsculas. Los palíndromos son palabras o frases que tienen la misma
+secuencia de letras hacia delante y hacia atrás. Muestre la salida de su
+programa sobre "Un hombre, un plan, un canal, Panamá". Debe utilizar un
+Stack como parte de la implementación como se mostró en el programa
+ReverseWord.py en el Listado 4-3.
+
+4.3 Crear una clase Deque basada en la discusión de deques (doubleended
+en este capítulo. Debería incluir insertLeft(),
+insertRight(), removeLeft(), removeRight(), peekLeft(),
+peekRight(), isEmpty() y isFull(). Debe admitir
+envolver al final del array, como hacen las colas.
+
+4.4 Escriba un programa que implemente una clase pila basada en la clase
+Deque del Proyecto de Programación 4.3. Esta clase debe tener
+los mismos métodos y capacidades que la clase Stack del módulo
+SimpleStack.py (Listado 4-1).
+
+4.5 La cola de prioridad mostrada en el Listado 4-7 permite la eliminación rápida de
+del elemento de mayor prioridad pero una inserción lenta de nuevos elementos. Escriba un programa
+con una clase PriorityQueue revisada que tenga un tiempo de inserción rápido, O(1),
+pero una eliminación más lenta del elemento de mayor prioridad. Escribe un programa
+que ejercite todos los métodos de la clase PriorityQueue.
+de la clase PriorQueue. Incluye el método que muestra el contenido de PriorityQueue como una cadena
+y utilícelo para mostrar el contenido de algunos ejemplos de prueba que
+incluyen casos en los que las inserciones no se producen en orden de prioridad.
+
+4.6 Las colas se utilizan a menudo para simular el flujo de personas, coches,
+aviones, transacciones, etc. Escriba un programa que modele
+colas de caja en una tienda, utilizando la clase Cola (Listado 4-5).
+El sistema debe modelar cuatro líneas de caja que inicialmente comienzan
+inicialmente vacías, etiquetadas como A, B, C y D. Utilice una cadena para modelar los eventos de llegada y finalización de la caja, utilizando una letra minúscula para cada uno de los eventos.
+eventos de llegada y finalización de caja utilizando una letra minúscula para indicar la llegada de un nuevo cliente a una de las líneas.
+una letra minúscula para indicar la llegada de un nuevo cliente a una de las líneas, y una letra mayúscula para indicar que un cliente ha finalizado su compra en una de las líneas.
+una letra mayúscula para indicar que un cliente ha terminado de pagar en la línea indicada. En
+ejemplo, la cadena "aababbAbA" muestra tres personas entrando en la línea de caja A
+y se procesan dos, mientras que en la línea B
+y no se procesa ninguna. Cuando se añade un cliente, se pone
+una "persona" en la cola añadiendo una cadena como "C1" a la cola
+donde el número aumenta por cada nueva persona. Cualquier carácter no alfabético
+no alfabético en la cadena (como un espacio o una coma) indica que el
+contenido actual de cada una de las colas. Utilice un
+OrderedRecordArray del Capítulo 2 para almacenar las colas y sus
+etiquetas. Imprime mensajes de error para las colas que desborden o no desborden.
+Muestra la salida de tu programa en estas colas:
+Haz clic aquí para ver la imagen del código
+aaaa,AAbcd
+abababcabc,Adb,Adb,Ca,
+dcbadcbaDCBA-dddAcccBbbbCaaaD-
+
+4.7 Extender las capacidades de PostfixTranslate.py en el Listado 4-9 y
+PostfixEvaluate.py en el Listado 4-11 para incluir el operador de asignación infija
+infijo, A = B. Cuando se evalúan expresiones en la pila que
+referencia a variables, busque los valores de las variables asignadas antes de
+realizar operaciones numéricas. El operador de asignación tiene la
+precedencia más baja que cualquiera de los otros operadores. A diferencia de Python, el operador de asignación
+debe devolver el valor del lado derecho como resultado.
+como resultado. En otras palabras, A=3*2 debería devolver un valor de 6 (en Python,
+devuelve Ninguno) con el efecto secundario de ligar A a 6. En este evaluador
+evaluador extendido, las referencias a variables deben producirse después de que se hayan establecido
+(en alguna expresión de mayor precedencia a la izquierda de la referencia).
+Su programa debe imprimir un mensaje de error si la expresión
+hace referencia a variables que no están definidas. Los valores de las variables deben
+recuperarse cuando un operador está intentando utilizar el valor para un cálculo
+(no cuando se introducen en la pila). El programa debe
+mostrar el contenido de la pila a medida que procesa cada token. Para
+ejemplo:
+Haga clic aquí para ver la imagen del código
+$ python3 proyecto_4_7_solucion.py
+Expresión infija a evaluar: (A = 3 * 2) * A
+La representación postfija de (A = 3 * 2) * A es: A 3 2 * = A
+*
+Después de procesar A la pila se mantiene: [A]
+Después de procesar 3 la pila contiene: [A, 3]
+Después de procesar 2 stack holds: [A, 3, 2]
+Después de procesar * stack holds: [A, 6]
+Después del procesamiento = stack holds: [6]
+Después de procesar A la pila contiene: [6, A]
+Después del procesamiento * pila retiene: [36]
+Resultado final = 36
+La primera aparición de A define el valor de A como 6, y la segunda
+hace referencia a ese valor. Utiliza la clase OrderedRecordArray
+del Capítulo 2 para almacenar y recuperar registros que contengan una variable
+nombre y valor de una variable. Muestra el resultado de ejecutar tu
+programa en '(A = 3 + 4 * 5) + (B = 7 * 6) + B/A'.
