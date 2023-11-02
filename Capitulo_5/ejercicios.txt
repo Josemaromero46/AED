@@ -1,0 +1,28 @@
+5.1 Reescribe los métodos traverse(), __str__(), y __len__() de la clase
+LinkedList mostrados en el Listado 5-4 para usar el iterador (creado por el
+el generador) mostrado en el Listado 5-23.
+
+5.2 Implementar una cola de prioridad basada en una lista enlazada ordenada.
+Los elementos almacenados en la cola pueden pasarse a una función que extrae
+su valor de prioridad (o clave) como en el módulo PriorityQueue.py del
+capítulo 4. La operación de eliminación de la cola de prioridad debe eliminar
+el elemento con la clave más pequeña.
+
+5.3 Implementar un deque basado en una lista doblemente enlazada. (Véase el
+Proyecto de programación 4.3 en el capítulo anterior). Debe incluir
+insertLeft(), insertRight(), removeLeft(), removeRight(),
+peekLeft(), peekRight(), y isEmpty().
+
+5.4 Cree una clase para una lista circular enlazada que no tenga fin ni principio
+como la que se muestra en la Figura 5-14. El único acceso a
+la lista es una única referencia, __last, que puede apuntar a cualquier enlace de la
+lista. Esta referencia puede moverse por la lista según sea necesario. Su estructura de datos
+debe tener métodos para comprobar si la lista está vacía e inspeccionar el primer elemento.
+inspeccionar el primer elemento. Debe proporcionar métodos para insertFirst(),
+insertLast(), deleteFirst(), y search() (pero no deleteLast()),
+asegurándose de que la lista permanezca siempre circular. Debe proporcionar un método
+método __str__() para mostrar la lista del primero al último (y es necesario
+romper el bucle antes de repetir cualquier elemento). Un método step() que
+mueva __last hasta el siguiente enlace y un método seek() que
+avance hasta el siguiente enlace que coincida con una clave de meta en particular podría
+también puede ser útil.

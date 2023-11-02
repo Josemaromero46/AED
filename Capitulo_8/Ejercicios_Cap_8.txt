@@ -1,0 +1,86 @@
+8.1 Alter the BinarySearchTree class described in this chapter to allow
+nodes with duplicate keys. Three methods are affected: __find(),
+insert(), and delete(). Choose to insert new left children at the
+shallowest level among equal keys, as shown on the left side of Figure 8-
+26, and always find and delete the deepest among equal keys. More
+specifically, the __find() and search() methods should return the
+deepest among equal keys that it encounters but should allow an optional
+parameter to specify finding the shallowest. The insert() method must
+handle the case when the item to be inserted duplicates an existing node,
+by inserting a new node with an empty left child below the deepest
+duplicate key. The delete() method must delete the deepest node among
+duplicate keys, thus providing a LIFO or stack-like behavior among
+duplicate keys. Think carefully about the deletion cases and whether the
+choice of successor nodes changes. Demonstrate how your
+implementation works on a tree inserting several duplicate keys
+associated with different values. Then delete those keys and show their
+values to make it clear that the last duplicate inserted is the first duplicate
+deleted.
+
+8.2 Write a program that takes a string containing a postfix expression
+and builds a binary tree to represent the algebraic expression like that
+shown in Figure 8-16. You need a BinaryTree class, like that of
+BinarySearchTree, but without any keys or ordering of the nodes. Instead
+of find(), insert(), and delete() methods, you need the ability to make
+single node BinaryTrees containing a single operand and a method to
+combine two binary trees to make a third with an operator as the root
+node. The syntax of the operators and operands is the same as what was
+used in the PostfixTranslate.py module from Chapter 4. You can use
+the nextToken() function in that module to parse the input string into
+operator and operand tokens. You don’t need the parentheses as
+delimiters because postfix expressions don’t use them. Verify that the
+input expression produces a single algebraic expression and raise an
+exception if it does not. For valid algebraic binary trees, use pre-, in-,
+and post-order traversals of the tree to translate the input into the output
+forms. Include parentheses for the in-order traversal to make the operator
+precedence clear in the output translation. Run your program on at least
+the following expressions:
+a. 91 95 + 15 + 19 + 4 *
+b. B B * A C 4 * * –
+c. 42
+d. A 57 # this should produce an exception
+e. + / # this should produce an exception
+
+
+8.1 Alterar la clase BinarySearchTree descrita en este capítulo para permitir
+nodos con claves duplicadas. Tres métodos se ven afectados: __find(),
+insert(), y delete(). Elija insertar nuevos hijos izquierdos en el
+nivel más superficial entre claves iguales, como se muestra en el lado izquierdo de la Figura 8-
+26, y siempre encontrar y borrar el más profundo entre claves iguales. Más
+En concreto, los métodos __find() y search() deben devolver la
+más profunda entre claves iguales que encuentre, pero deberían permitir un parámetro opcional
+para especificar la búsqueda de la más superficial. El método insert() debe
+manejar el caso en que el elemento a insertar duplique un nodo existente,
+insertando un nuevo nodo con un hijo izquierdo vacío debajo de la clave duplicada
+duplicado más profundo. El método delete() debe eliminar el nodo más profundo entre
+claves duplicadas, proporcionando así un comportamiento LIFO o de pila entre
+claves duplicadas. Piense detenidamente en los casos de borrado y si la
+elección de los nodos sucesores. Demuestre cómo funciona su
+implementación funciona en un árbol que inserta varias claves duplicadas
+asociadas a valores diferentes. A continuación, elimine esas claves y muestre sus
+valores para dejar claro que el último duplicado insertado es el primer duplicado
+duplicado borrado.
+
+8.2 Escribe un programa que tome una cadena que contenga una expresión postfija
+y construya un árbol binario para representar la expresión algebraica como el que
+que se muestra en la Figura 8-16. Necesita una clase BinaryTree, como la de
+BinarySearchTree, pero sin claves ni ordenación de los nodos. En su lugar
+de los métodos find(), insert() y delete(), necesita la capacidad de hacer
+árboles binarios de un solo nodo que contengan un solo operando y un método para
+combinar dos árboles binarios para hacer un tercero con un operador como nodo raíz.
+operador. La sintaxis de los operadores y operandos es la misma que se utilizaba en el método
+utilizado en el módulo PostfixTranslate.py del Capítulo 4. Puede usar
+la función nextToken() de ese módulo para analizar la cadena de entrada en
+tokens de operador y operando. No necesita los paréntesis como
+delimitadores porque las expresiones postfix no los usan. Compruebe que la expresión de entrada
+expresión de entrada produce una única expresión algebraica y lanza una
+excepción si no es así. Para árboles binarios algebraicos válidos, utilice pre-, in-,
+y post-orden del árbol para traducir la entrada a las formas de salida.
+formas. Incluya paréntesis para el recorrido dentro del orden para que el operador
+en la traducción de salida. Ejecute su programa con al menos
+las siguientes expresiones:
+a. 91 95 + 15 + 19 + 4 *
+b. B B * A C 4 * * -.
+c. 42
+d. A 57 # esto debería producir una excepción
+e. + / # esto debería producir una excepción
