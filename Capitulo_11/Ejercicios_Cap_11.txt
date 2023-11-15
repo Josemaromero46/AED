@@ -1,6 +1,40 @@
-11.3 Explore qué sucede cuando el tamaño de la tabla hash es una potencia de 2 en lugar de un número primo. Vuelva a escribir el método HashTable.__growTable() para que duplique el tamaño de la tabla sin encontrar el siguiente número primo mayor que ese. Utilice las mismas condiciones que en el Proyecto 11.1, excepto que utilice un tamaño inicial de 128 para las tablas hash. Las 200 claves que se insertan obligarán a la tabla a crecer al menos una vez, y debería seguir siendo una potencia de 2. Usar un tamaño de tabla que no sea un número primo aumenta las posibilidades de colisiones, hasta el punto de que es probable que se ejecute. en la excepción generada por el método insert() cuando la secuencia de sonda se queda sin celdas para probar (consulte el Listado 11-5). La excepción ocurrirá solo para algunas distribuciones de claves, por lo que es posible que deba inicializar el generador de números aleatorios con diferentes valores para causar la excepción. Asegúrese de detectar la excepción y registrar el problema para la secuencia de sonda y el factor de carga particulares. El mismo conjunto de claves puede funcionar con una secuencia de sonda, pero no con otras. Como en el Proyecto 11.1, muestre el número de claves desplazadas para las nueve condiciones diferentes: tres esquemas de sonda multiplicados por tres factores de carga. Si las 200 claves no se pueden insertar para una condición particular, muéstrelo también.
+11.3 Explore qué sucede cuando el tamaño de la tabla hash es una potencia de 2 
+en lugar de un número primo. Vuelva a escribir el método HashTable.__growTable()
+ para que duplique el tamaño de la tabla sin encontrar el siguiente número 
+ primo mayor que ese. Utilice las mismas condiciones que en el Proyecto 11.1, 
+ excepto que utilice un tamaño inicial de 128 para las tablas hash. 
+ Las 200 claves que se insertan obligarán a la tabla a crecer al menos una vez, 
+ y debería seguir siendo una potencia de 2. Usar un tamaño de tabla que no sea 
+ un número primo aumenta las posibilidades de colisiones, hasta el punto de que 
+ es probable que se ejecute. en la excepción generada por el método insert() 
+ cuando la secuencia de sonda se queda sin celdas para probar (consulte el Listado 11-5). 
+ La excepción ocurrirá solo para algunas distribuciones de claves, por lo que 
+ es posible que deba inicializar el generador de números aleatorios con diferentes 
+ valores para causar la excepción. Asegúrese de detectar la excepción y registrar 
+ el problema para la secuencia de sonda y el factor de carga particulares.
+  El mismo conjunto de claves puede funcionar con una secuencia de sonda, pero 
+  no con otras. Como en el Proyecto 11.1, muestre el número de claves desplazadas 
+  para las nueve condiciones diferentes: tres esquemas de sonda multiplicados 
+  por tres factores de carga. Si las 200 claves no se pueden insertar para una 
+  condición particular, muéstrelo también.
 
-11.4 El cálculo del tamaño del paso de hash doble en el Listado 11-10 utiliza la función simplehash(). Reemplace esa función con una función hash multiplicativa que es una variación del método de Horner descrito en la sección "Cadenas Hashing", excepto que está diseñada para funcionar con claves hash enteras. Las claves de números enteros se pueden tratar como una secuencia de bytes. Puedes obtener el byte más bajo de un número entero grande N usando un bit máscara en Python, N y 0xFF. El bucle itera sobre los bytes y calcula un hash que comienza en 0. En cada iteración, el hash actual se multiplica por un número primo y el byte bajo más otro número primo se suman para obtener el siguiente valor del hash. Multiplicar por un número primo y agregar otro número primo ayuda a distribuir la influencia de cada bit de la clave en el valor hash. Genere una tabla como la Tabla 11-2 que muestre la inserción de 20 claves enteras seleccionadas aleatoriamente del rango [0, 99999]. Muestre la dirección hash multiplicativa junto con el módulo con el primo pequeño para derivar el tamaño del paso. Debe escribir algo de código para producir la secuencia de sonda y echar un vistazo a los valores almacenados antes de insertar el elemento en la tabla hash para mostrar la última columna de la tabla.
+11.4 El cálculo del tamaño del paso de hash doble en el Listado 11-10 utiliza 
+la función simplehash(). Reemplace esa función con una función **hash multiplicativa**
+que es una variación del método de Horner descrito en la sección "Cadenas Hashing", 
+excepto que está diseñada para funcionar con claves hash enteras. Las claves de 
+números enteros se pueden tratar como una secuencia de bytes. Puedes obtener el 
+byte más bajo de un número entero grande N usando un bit máscara en Python, 
+N y 0xFF. El bucle itera sobre los bytes y calcula un hash que comienza en 0. 
+En cada iteración, el hash actual se multiplica por un número primo y el byte
+ bajo más otro número primo se suman para obtener el siguiente valor del hash.
+  Multiplicar por un número primo y agregar otro número primo ayuda a distribuir
+  la influencia de cada bit de la clave en el valor hash. Genere una tabla como 
+  la Tabla 11-2 que muestre la inserción de 20 claves enteras seleccionadas 
+  aleatoriamente del rango [0, 99999]. Muestre la dirección hash multiplicativa 
+  junto con el módulo con el primo pequeño para derivar el tamaño del paso. 
+  Debe escribir algo de código para producir la secuencia de sonda y echar un 
+  vistazo a los valores almacenados antes de insertar el elemento en la tabla 
+  hash para mostrar la última columna de la tabla.
 
 
 ---------------------------------------------------------------

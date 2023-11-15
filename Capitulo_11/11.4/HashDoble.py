@@ -1,14 +1,14 @@
 import random
 def multiplicativeHash(key):
     # Función de hashing multiplicativa
-    hashVal = 0
-    byteMask = 0xFF
-    prime1 = 53
+    hashVal = 0 #acumulador
+    byteMask = 0xFF # extrae el byte más bajo de la clave en cada iteración.
+    prime1 = 53 
     prime2 = 89
     while key > 0:
-        byte = key & byteMask
-        hashVal = hashVal * prime1 + (byte + prime2)
-        key >>= 8
+        byte = key & byteMask # extrae el byte más bajo de la clave
+        hashVal = hashVal * prime1 + (byte + prime2) # Actualiza el valor de hash multiplicando el valor actual por prime1 y sumándole el byte extraído más prime2
+        key >>= 8  # Desplaza la clave 8 bits
     return hashVal
 
 def doubleHashProbe(start, key, size):
