@@ -19,6 +19,9 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Islafire')
 pygame.display.set_icon(icon)
 
+#game variables
+game_paused = False
+
 # Configuración de la velocidad de fotogramas por segundo
 clock = pygame.time.Clock()
 FPS = 60
@@ -99,6 +102,7 @@ PINK = (192, 57, 43)
 
 # Definición de fuente
 font = pygame.font.SysFont('Futura', 30)
+font1 = pygame.font.SysFont('Futura', 50, True, False)
 
 def draw_text(text, font, text_col, x, y):
 	img = font.render(text, True, text_col)
@@ -667,6 +671,7 @@ for row in range(ROWS):
 	r = [-1] * COLS
 	world_data.append(r)
 #load in level data and create world
+
 with open(f'level{level}_data.csv', newline='') as csvfile:
 	reader = csv.reader(csvfile, delimiter=',')
 	for x, row in enumerate(reader):
@@ -698,6 +703,8 @@ while run:
 		world.draw()
 		#show player health
 		health_bar.draw(player.health)
+		#show level
+		draw_text(f'NIVEL: {level}', font1, WHITE, 620, 25)
 		#show ammo
 		draw_text('BALAS: ', font, WHITE, 10, 35)
 		for x in range(player.ammo):
@@ -706,7 +713,6 @@ while run:
 		draw_text('GRENADAS: ', font, WHITE, 10, 60)
 		for x in range(player.grenades):
 			screen.blit(grenade_img, (135 + (x * 15), 60))
-
 
 		player.update()
 		player.draw()
@@ -825,6 +831,13 @@ while run:
 			if event.key == pygame.K_q:
 				grenade = False
 				grenade_thrown = False
+	#event handler
+	for event in pygame.event.get():
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_SPACE:
+				game_paused = True
+		if event.type == pygame.QUIT:
+			run = False
 
 
 	pygame.display.update()
