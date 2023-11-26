@@ -103,6 +103,7 @@ PINK = (192, 57, 43)
 # Definición de fuente
 font = pygame.font.SysFont('Futura', 30)
 font1 = pygame.font.SysFont('Futura', 50, True, False)
+font2 = pygame.font.SysFont('Futura', 120, True, False)
 
 def draw_text(text, font, text_col, x, y):
 	img = font.render(text, True, text_col)
@@ -781,6 +782,25 @@ while run:
 								world_data[x][y] = int(tile)
 					world = World()
 					player, health_bar = world.process_data(world_data)	
+			
+			
+			
+			# Lógica para verificar si el jugador ha alcanzado el último nivel
+			if level == 6:  # Ajusta esto al último nivel de tu juego
+				def draw_text1(text, font1, color, x, y, animate):
+					surface = font1.render(text, True, color)
+					text_rect = surface.get_rect()
+					text_rect.center = (x, y)
+
+					if animate:
+						# Aplicar un efecto de animación sencillo
+						text_rect.y += 10 * pygame.time.get_ticks() // 1000 % 2
+
+					screen.blit(surface, text_rect)
+				
+				# Mostrar el mensaje de "Ganaste!"
+				draw_text1('¡GANASTE! ', font2, GREEN, SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, True)
+
 		else:
 			screen_scroll = 0
 			if death_fade.fade():
@@ -838,7 +858,7 @@ while run:
 				game_paused = True
 		if event.type == pygame.QUIT:
 			run = False
-
+	 
 
 	pygame.display.update()
 
