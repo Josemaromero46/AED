@@ -16,6 +16,6 @@ El repositorio está organizado en carpetas, cada una correspondiente a un conju
   En esta carpeta encontrarás los codigos que se encuentran de ejemplo en el libro, siempre ordenados segun los capitulos del libro.
 
 - **Proyecto PYGAME**
-  Contiene el codigo de un juego llamado "Islafire", que es la modificacion hecha por mi de un juego descargado de [Pygame.org].
+  Contiene el codigo de un juego llamado "Islafire", que es la modificacion hecha por mí, de un juego descargado de [Pygame.org].
 
 ¡Esperamos que estos ejercicios sean útiles para aprender y practicar algoritmos y estructuras de datos!
