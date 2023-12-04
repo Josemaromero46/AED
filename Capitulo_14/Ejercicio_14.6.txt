@@ -1,0 +1,151 @@
+14.6 El Tour del Caballero es un antiguo y famoso rompecabezas de ajedrez. El
+El objetivo es mover un caballo de una casilla a otra en un camino que de otro modo
+tablero de ajedrez vacío hasta que haya visitado cada casilla exactamente una vez. Escribir
+un programa que resuelve este rompecabezas mediante una búsqueda en profundidad. lo mejor es que 
+Haga que el tamaño del tablero sea variable para que pueda intentar soluciones para
+tableros cuadrados más pequeños (K×K). El tablero normal de 8×8 podría tardar años
+resolver en computadoras pequeñas, pero una placa de 5 × 5 debería tomar menos de un
+minuto. Tenemos más que decir sobre la complejidad de este problema en
+el siguiente capítulo.
+
+Consulte la sección "Simulaciones de juego y recorrido transversal primero en profundidad" en
+este capítulo, teniendo en cuenta que un rompecabezas es como un juego de un solo jugador. Él
+Puede ser más fácil pensar en la creación de un nuevo caballero y que permanezca en él.
+la nueva casilla cuando se realiza un movimiento (en lugar de mover una sola
+caballero alrededor). De esta manera, una secuencia de caballeros añadidos representa la
+estado del tablero de juego, y las casillas ocupadas se pueden deducir de la
+posiciones de los caballeros. Cuando el tablero esté completamente lleno de caballos.
+(la secuencia de caballeros es igual al tamaño del tablero), ganas.
+Al buscar su próximo movimiento, un caballo no sólo debe hacer un movimiento legal
+movimiento del caballo (dos espacios en una dirección y un espacio en la
+otro), pero tampoco debe moverse fuera del tablero o en una zona ya ocupada.
+(visitada) plaza. Si haces que el programa muestre el tablero
+y espera a que se presione una tecla después de cada movimiento, puedes ver el progreso
+del algoritmo a medida que coloca más y más caballos en el tablero.
+Cuando queda encerrado, puedes verlo retroceder eliminando algunos
+caballeros y probando una serie diferente de movimientos.
+Este problema tiene algunas complejidades que pueden no parecer obvias.
+Uno de los más importantes es lo que representan los vértices del gráfico.
+Observar los tableros de tres en raya en la Figura 14-8 sugeriría usar
+vértices para representar los estados del tablero: donde cada uno de los nueve cuadrados está
+ya sea en blanco, una X o una O. Para utilizar el método transversal de profundidadFirst()
+como se muestra en el Listado 14-4, primero deberá crear un gráfico con un
+vértice para cada estado posible del tablero. En tres en raya hay 39 =
+19.683 formas posibles de colocar espacios en blanco, X u O en los nueve cuadrados.
+Aunque muchos de ellos serían imposibles en un juego real (por
+Por ejemplo, donde el número de X y O difieren en más de 1),
+crear todos esos vértices y luego agregar bordes entre ellos sería
+llevar mucho tiempo. Para un tablero de ajedrez de 8×8 donde cada casilla es
+ya sea vacío u ocupado por un caballero, hay 264, o más de 4 mil millones,
+estados del tablero. No es probable que esa sea una manera eficiente de resolver este problema.
+problema.
+Para muchas simulaciones de juegos, el gráfico no se crea completamente en el
+comienzo. A medida que se realizan movimientos y se desarrollan posibles contramovimientos
+explorados, se agregan nuevos vértices al gráfico según las normas legales.
+se mueve desde el último estado del tablero. Por lo tanto, el gráfico es sólo parcialmente
+representado durante todo el juego. Eso significa que la profundidad primero
+Los métodos transversales que implementamos no funcionarán para resolver el problema del Caballero.
+recorrido porque ni la matriz de adyacencia ni la lista de vértices son
+completo.
+Otro enfoque es crear un vértice por cuadrado en el tablero.
+Los bordes entre vértices podrían representar movimientos legales del caballo en
+ajedrez. De esta manera, el gráfico representa los movimientos legales de la junta directiva, no los movimientos de la junta directiva.
+estados. El estado del tablero está implícito en el camino tomado por el
+búsqueda, que es una secuencia de casillas donde se colocan los caballeros.
+El número de vértices del gráfico sería K×K, con
+aproximadamente 4×K×K bordes. Si utiliza el recorrido de profundidadFirst()
+método en este gráfico de movimientos del tablero legal, ¿resolverías el rompecabezas?
+Este método ciertamente proporcionaría un camino para todos los movimientos legales y
+Evite volver a visitar los vértices (cuadrados) visitados anteriormente en el camino. El
+El problema, sin embargo, es que está diseñado para visitar cada vértice exactamente.
+una vez.
+En el caso del Knight's Tour, es necesario explorar todos los posibles
+camino hacia un vértice. Para ver por qué, imagina que después de visitar 24 de los 25
+cuadrados en un tablero de 5 × 5, descubres que el último cuadrado vacío no se puede
+Se llega desde la última plaza visitada. Entonces, debes retroceder en el
+búsqueda en profundidad. Digamos que regresas al vigésimo caballero y pruebas un nuevo
+camino a través de los 5 cuadrados restantes. Si hubieras marcado 4 de esos
+últimos 5 cuadrados en la matriz visitada utilizada por el recorrido de profundidadFirst()
+método, no serían registrados nuevamente. Necesitas una forma diferente de
+marcando lo que ya ha sido buscado.
+Si utiliza un gráfico de movimiento de tablero legal, primero deberá escribir un gráfico en profundidad.
+recorrido que explora todos los caminos potenciales en el gráfico, no solo todos
+vértices. Si creas vértices de estado del tablero de juego mientras buscas, entonces
+debe asegurarse de visitar esos vértices en primer orden en profundidad.
+
+----------------------------------------------------------------------
+
+14.6 The Knight’s Tour is an ancient and famous chess puzzle. The
+object is to move a knight from one square to another on an otherwise
+empty chess board until it has visited every square exactly once. Write
+a program that solves this puzzle using a depth-first search. It’s best to
+make the board size variable so that you can attempt solutions for
+smaller, square boards (K×K). The regular 8×8 board could take years
+to solve on small computers, but a 5×5 board should take less than a
+minute. We have more to say about the complexity of this problem in
+the next chapter.
+
+Refer to the “Depth-First Traversal and Game Simulations” section in
+this chapter, keeping in mind that a puzzle is like a one-player game. It
+may be easier to think of a new knight being created and remaining on
+the new square when a move is made (rather than moving a single
+knight around). This way, a sequence of added knights represents the
+game board state, and the occupied squares can be deduced from the
+knights’ positions. When the board is completely filled with knights
+(the sequence of knights equals the size of the board), you win.
+When looking for its next move, a knight must not only make a legal
+knight’s move (two spaces in one direction and one space in the
+other), but it must also not move off the board or onto an alreadyoccupied
+(visited) square. If you make the program display the board
+and wait for a keypress after every move, you can watch the progress
+of the algorithm as it places more and more knights on the board.
+When it gets boxed in, you can see it backtrack by removing some
+knights and trying a different series of moves.
+This problem has some complexities that might not seem obvious.
+One of the most important is what the vertices in the graph represent.
+Looking at the tic-tac-toe boards in Figure 14-8 would suggest using
+vertices to represent the board states: where each of the nine squares is
+either blank, an X, or an O. To use the depthFirst() traversal method
+shown in Listing 14-4, you would need to first create a Graph with a
+vertex for every possible board state. In tic-tac-toe there are 39 =
+19,683 possible ways of placing blank, X, or O in the nine squares.
+Even though many of those would be impossible in a real game (for
+example, where the number of Xs and Os differ by more than 1),
+creating all those vertices and then adding edges between them would
+be time-consuming. For an 8×8 chessboard where every square is
+either empty or occupied by a knight, there are 264, or over 4 billion,
+board states. That is not likely to be an efficient way to solve this
+problem.
+For many game simulations, the graph is not fully created at the
+beginning. As moves are made and potential counter moves are
+explored, new vertices are added to the graph based on the legal
+moves from the last board state. Thus, the graph is only partially
+represented throughout the game. That means that the depth-first
+traversal methods we implemented won’t work to solve the Knight’s
+tour because neither the adjacency matrix nor the list of vertices is
+complete.
+Another approach is to create one vertex per square on the board.
+Edges between vertices could then represent legal knight moves in
+chess. In this way the graph represents legal board moves, not board
+states. The state of the board is implicit in the path taken by the
+search, which is a sequence of squares where the knights are placed.
+The number of vertices for the graph would be K×K, with
+approximately 4×K×K edges. If you use the depthFirst() traversal
+method on this legal board move graph, would you solve the puzzle?
+This method would certainly provide a path of all legal moves and
+avoid revisiting vertices (squares) previously visited on the path. The
+problem, however, is that it is designed to visit every vertex exactly
+once.
+In the case of the Knight’s Tour, you need to explore every possible
+path to a vertex. To see why, imagine that after visiting 24 of the 25
+squares in a 5×5 board, you find that the last empty square cannot be
+reached from the last square visited. So, you must backtrack in the
+depth-first search. Let’s say you return to the 20th knight and try a new
+path through the remaining 5 squares. If you had marked 4 of those
+last 5 squares in the visited array used by the depthFirst() traversal
+method, they wouldn’t be searched again. You need a different way of
+marking what has already been searched.
+If you use a legal board move graph, you will need to write a depthfirst
+traversal that explores all potential paths in the graph, not just all
+vertices. If you create game board state vertices as you search, then
+you must ensure that you visit those vertices in depth-first order.
